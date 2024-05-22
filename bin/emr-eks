@@ -1,0 +1,31 @@
+#!/bin/zsh
+
+# Load functions from the src directory
+source "$(dirname "$0")/../src/emr_eks_functions.zsh"
+
+# Main CLI Handler
+emr-eks() {
+    local -a commands=('fetch-virtual-clusters' 'describe-job' 'cancel-job' 'clone-job' 'get-pods' 'list-running-jobs')
+    if [[ "$#" -lt 1 ]]; then
+        echo "Usage: emr-eks <command> [options]"
+        echo "\nCommands:"
+        printf "  %s\n" "${commands[@]}"
+        return 1
+    fi
+
+    local command="$1"
+    shift
+
+    case "$command" in
+        fetch-virtual-clusters) fetch_virtual_clusters ;;
+        list-running-jobs) list_running_jobs "$@" ;;
+        describe-job) describe_job "$@" ;;
+        cancel-job) cancel_job "$@" ;;
+        clone-job) clone_job "$@" ;;
+        get-pods) get_pods "$@" ;;
+        *) echo "Unknown command: $command"; return 1 ;;
+    esac
+}
+
+# Entry point for the script
+emr-eks "$@"
