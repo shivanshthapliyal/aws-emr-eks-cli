@@ -288,16 +288,10 @@ list_running_jobs() {
         fi
 
         echo "Last 10 COMPLETED or FAILED jobs in virtual cluster $virtual_cluster_name:"
-        printf "%-40s %-30s %-10s %-20s %-30s\n" "JOB_ID" "JOB_NAME" "STATE" "RELEASE_LABEL" "CREATED_AT"
-        echo "$completed_failed_jobs" | jq -r '.[] | 
-            [(.Id // "-"), (.Name // "-"), (.State // "-"), (.ReleaseLabel // "-"), (.CreatedAt // "-")] | 
-            @tsv' | column -t -s $'\t'
+        echo "$completed_failed_jobs" | jq -r '(["JOB_ID", "JOB_NAME", "STATE", "RELEASE_LABEL", "CREATED_AT"] | @tsv), (.[] | [.Id, .Name, .State, .ReleaseLabel, .CreatedAt] | @tsv)' | column -t
     else
         echo "Running jobs in virtual cluster $virtual_cluster_name:"
-        printf "%-40s %-30s %-10s %-20s %-30s\n" "JOB_ID" "JOB_NAME" "STATE" "RELEASE_LABEL" "CREATED_AT"
-        echo "$running_jobs" | jq -r '.[] | 
-            [(.Id // "-"), (.Name // "-"), (.State // "-"), (.ReleaseLabel // "-"), (.CreatedAt // "-")] | 
-            @tsv' | column -t -s $'\t'
+        echo "$running_jobs" | jq -r '(["JOB_ID", "JOB_NAME", "STATE", "RELEASE_LABEL", "CREATED_AT"] | @tsv), (.[] | [.Id, .Name, .State, .ReleaseLabel, .CreatedAt] | @tsv)' | column -t
     fi
 }
 
