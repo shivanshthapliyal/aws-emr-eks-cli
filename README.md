@@ -49,14 +49,16 @@ emr-eks <command> [options]
 
 ### Available Commands
 
-| Command | Description |
-| ------- | ----------- |
-| `fetch-virtual-clusters` | Fetches and saves the virtual clusters available in your AWS account. |
-| `list-running-jobs <eks_cluster_name> <virtual_cluster_name>` | Lists all running jobs in the specified EKS cluster and virtual cluster. |
-| `describe-job <eks_cluster_name> <virtual_cluster_name> <JOB_ID>` | Provides detailed information about a specific job identified by `JOB_ID`. |
-| `cancel-job <eks_cluster_name> <virtual_cluster_name> <JOB_ID>` | Cancels a specific job identified by `JOB_ID`. |
-| `clone-job <eks_cluster_name> <virtual_cluster_name> <JOB_ID>` | Creates a clone of a specific job identified by `JOB_ID`. |
-| `get_pods <eks_cluster_name> <virtual_cluster_name> <JOB_ID>` | Retrieves and displays pods related to the specified job identified by `JOB_ID`. |
+| Command                     | Arguments                                     | Description                                                      |
+| --------------------------- | --------------------------------------------- | ---------------------------------------------------------------- |
+| `fetch-virtual-clusters`    | None                                          | Fetches and saves the virtual clusters available in your AWS account. |
+| `list-running-jobs`         | `<eks_cluster_name> <virtual_cluster_name>` <br> *(This information can be autocompleted using TAB once `fetch-virtual-clusters` has run once.)* | Lists the running jobs in the specified EKS cluster and virtual cluster. |
+| `describe-job`              | `<eks_cluster_name> <virtual_cluster_name> <JOB_ID>` | Describes a specific job identified by JOB_ID.                    |
+| `cancel-job`                | `<eks_cluster_name> <virtual_cluster_name> <job_id>` | Cancels a specific job.                                           |
+| `clone-job`                 | `<eks_cluster_name> <virtual_cluster_name> <JOB_ID>` | Clones a specific job.                                            |
+| `get_pods`                  | `<eks_cluster_name> <virtual_cluster_name> <job_id>` | Retrieves pods related to the specified job.                      |
+
+
 
 ### Examples
 
