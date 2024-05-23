@@ -49,10 +49,14 @@ emr-eks <command> [options]
 
 ### Available Commands
 
-- `fetch-virtual-clusters`: Fetches and saves the virtual clusters available in your AWS account.
-- `describe-job <eks_cluster_name> <virtual_cluster_name> <JOB_ID>`: Describes a specific job identified by JOB_ID.
-- `cancel-job <eks_cluster_name> <virtual_cluster_name> <job_id>`: Cancels a specific job.
-- `clone-job <eks_cluster_name> <virtual_cluster_name> <JOB_ID>`: Clones a specific job.
+| Command | Description |
+| ------- | ----------- |
+| `fetch-virtual-clusters` | Fetches and saves the virtual clusters available in your AWS account. |
+| `list-running-jobs <eks_cluster_name> <virtual_cluster_name>` | Lists all running jobs in the specified EKS cluster and virtual cluster. |
+| `describe-job <eks_cluster_name> <virtual_cluster_name> <JOB_ID>` | Provides detailed information about a specific job identified by `JOB_ID`. |
+| `cancel-job <eks_cluster_name> <virtual_cluster_name> <JOB_ID>` | Cancels a specific job identified by `JOB_ID`. |
+| `clone-job <eks_cluster_name> <virtual_cluster_name> <JOB_ID>` | Creates a clone of a specific job identified by `JOB_ID`. |
+| `get_pods <eks_cluster_name> <virtual_cluster_name> <JOB_ID>` | Retrieves and displays pods related to the specified job identified by `JOB_ID`. |
 
 ### Examples
 
